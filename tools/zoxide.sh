@@ -26,6 +26,7 @@ if [[ $? -ne 0 ]]; then
     log "Error: Failed to install Zoxide."
     exit 1
 fi
+
 log "Zoxide installed successfully."
 
 log "Zoxide installation script completed."

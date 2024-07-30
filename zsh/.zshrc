@@ -70,9 +70,7 @@ ZSH_THEME="robbyrussell" # theme is changed by starship
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-plugins=(zsh-autosuggestions)
-plugins=(zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,8 +103,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source <(fzf --zsh)
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
+
 eval "$(starship init zsh)"
 
+alias c='clear'
+alias bat='batcat'
 alias t='tmux attach -t akkolyth'
+alias mc='mc -S ~/.local/mc/skins/dracula256.ini'

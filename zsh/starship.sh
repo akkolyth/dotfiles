@@ -13,18 +13,18 @@ log() {
 }
 
 log "Fetching package information for starship..."
-sudo apt-get update
+apt-get update -y
 if [[ $? -ne 0 ]]; then
     log "Error: Failed to update package information."
     exit 1
 fi
 
-log "Installing Starship prompt..."
-curl -sS https://starship.rs/install.sh | sh
+log "Downloading the Starship installation script..."
+curl -sS https://starship.rs/install.sh | sh -s -- -y
+
 if [[ $? -ne 0 ]]; then
-    log "Error: Failed to install Starship prompt."
+    log "Error: Failed to download the Starship installation script."
     exit 1
 fi
-log "Starship prompt installed successfully."
 
-log "Starship prompt installation script completed."
+log "Starship prompt installed successfully."

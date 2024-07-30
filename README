@@ -1,25 +1,17 @@
 .dotfiles
 
-* bash_profile     setup OK
-* alacritty        setup OK
-* lazydocker       setup OK
-* lazygit          setup OK
-* oh-my-zsh        setup OK
-* tmux             setup OK
-* zsh              setup OK
-* starship         setup OK
-* zoxide           setup OK
-* fzf              setup OK
+Installation
 
-TODO:
-* tools list
-* GNU stow
-* install.sh
-* personal configs like git in different repo
-* zsh addons
-* extend tools list
-* midnight commander
-* aliases
-* final boss: vim
-* https://www.youtube.com/watch?v=stCXFxC4OH0
-* https://catalins.tech/zsh-plugins/
+To set up these dotfiles on your system, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   git clone https://github.com/akkolyth/dotfiles.git ~/.dotfiles
+
+2. Navigate to the directory:
+
+   cd ~/.dotfiles
+
+3. Run the installation script with elevated privileges:
+
+   sudo -E ./install.sh
