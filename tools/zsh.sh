@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
+# https://www.zsh.org/
+
+
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root"
     exit 1
