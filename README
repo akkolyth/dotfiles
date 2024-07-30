@@ -7,13 +7,13 @@
 * oh-my-zsh        setup OK
 * tmux             setup OK
 * zsh              setup OK
+* starship         setup OK
+* zoxide           setup OK
 
 TODO:
 * tools list
 * GNU stow
 * install.sh
-* starship
-* zoxide
 * personal configs like git in different repo
 * extend tools list
 * midnight commander
