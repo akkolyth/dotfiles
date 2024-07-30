@@ -105,5 +105,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(starship init zsh)"
+source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+alias t='tmux attach -t akkolyth'
