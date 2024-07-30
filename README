@@ -9,15 +9,17 @@
 * zsh              setup OK
 * starship         setup OK
 * zoxide           setup OK
+* fzf              setup OK
 
 TODO:
 * tools list
 * GNU stow
 * install.sh
 * personal configs like git in different repo
+* zsh addons
 * extend tools list
 * midnight commander
-* fzf
 * aliases
 * final boss: vim
 * https://www.youtube.com/watch?v=stCXFxC4OH0
+* https://catalins.tech/zsh-plugins/
