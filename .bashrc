@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Bash profile handling
+[[ $bashrc_already_sourced ]] && return
+declare -- bashrc_already_sourced=1
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -117,3 +121,10 @@ if ! shopt -oq posix; then
 fi
 
 # k8s
+export KUBECONFIG=~/.kube/config
+
+# bash profile handling
+[[ -s ~/.bash_profile ]] && source ~/.bash_profile
+
+# zsh
+exec zsh

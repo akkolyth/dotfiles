@@ -3,6 +3,7 @@
 # A simple terminal UI for both docker and docker-compose, written in Go with the gocui library.
 # https://github.com/jesseduffield/lazydocker
 
+
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root"
    exit 1

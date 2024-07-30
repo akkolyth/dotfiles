@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
-# https://www.zsh.org/
+# Oh My Zsh is an open source, community-driven framework for managing your zsh configuration.
+# https://github.com/ohmyzsh/ohmyzsh
 
 
 if [[ $EUID -ne 0 ]]; then
@@ -36,4 +36,12 @@ if [[ $? -ne 0 ]]; then
 fi
 log "zsh installed and verified successfully."
 
-log "zsh installation script completed."
+log "Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [[ $? -ne 0 ]]; then
+    log "Error: Failed to install Oh My Zsh."
+    exit 1
+fi
+log "Oh My Zsh installed successfully."
+
+log "zsh and Oh My Zsh installation script completed."

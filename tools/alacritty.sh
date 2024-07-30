@@ -3,6 +3,7 @@
 # Alacritty - A fast, cross-platform, OpenGL terminal emulator
 # https://github.com/alacritty/alacritty
 
+
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root"
     exit 1
