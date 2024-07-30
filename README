@@ -1,1 +1,21 @@
 .dotfiles
+
+* bash_profile     setup OK
+* alacritty        setup OK
+* lazydocker       setup OK
+* lazygit          setup OK
+* oh-my-zsh        setup OK
+* tmux             setup OK
+* zsh              setup OK
+
+TODO:
+* tools list
+* install.sh
+* starship
+* zoxide
+* extend tools list
+* midnight commander
+* fzf
+* aliases
+* final boss: vim
+* https://www.youtube.com/watch?v=stCXFxC4OH0
