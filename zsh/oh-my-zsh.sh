@@ -22,6 +22,8 @@ fi
 
 
 log "Installing Oh My Zsh..."
+export RUNZSH="no"
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 if [[ $? -ne 0 ]]; then
     log "Error: Failed to install Oh My Zsh."
