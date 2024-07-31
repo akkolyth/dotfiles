@@ -59,15 +59,22 @@ print_summary() {
 stow_dotfiles() {
     log "Stowing dotfiles..."
 
-    directories=("bash" "tmux" "zsh")
+    directories=("bash_cfg" "tmux_cfg" "zsh_cfg")
 
     for dir in "${directories[@]}"; do
         if [[ -d "$dir" ]]; then
             for file in $(ls -A "$dir"); do
+                if [[ "$file" == *.sh ]]; then
+                    echo "Skipping $file (shell script)"
+                    continue
+                fi
+
                 target="$HOME/$file"
                 if [[ -e "$target" && ! -L "$target" ]]; then
-                    mv "$target" "$target.bak"
-                    echo "Backed up $file to $file.bak"
+                    if [[ "$(stow --simulate --target="${HOME}" "$dir" 2>&1 | grep "$file")" ]]; then
+                        mv "$target" "$target.bak"
+                        echo "Backed up $file to $file.bak"
+                    fi
                 fi
             done
 
