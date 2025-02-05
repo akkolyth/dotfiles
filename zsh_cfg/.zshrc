@@ -104,11 +104,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
-eval "$(zoxide init zsh)"
+export KUBECONFIG=~/.kube/config
 
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 alias c='clear'
 alias bat='batcat'
 alias t='tmux attach -t akkolyth'
 alias mc='mc -S ~/.local/mc/skins/dracula256.ini'
+
+# WSL GH
+pgrep -x "ssh-agent" > /dev/null || eval "$(ssh-agent -s)"
+ssh-add -l | grep -q "mm_wsl" || ssh-add ~/.ssh/mm_wsl

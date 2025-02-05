@@ -120,9 +120,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# k8s
-export KUBECONFIG=~/.kube/config
-
 # bash profile handling
 [[ -s ~/.bash_profile ]] && source ~/.bash_profile
 
