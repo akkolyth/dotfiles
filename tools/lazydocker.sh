@@ -21,7 +21,6 @@ verify_binary() {
 }
 
 require_root
-log "Installing LazyDocker..."
 VERSION=$(curl -s https://api.github.com/repos/jesseduffield/lazydocker/releases/latest | grep -Po '"tag_name": "v\K[0-9.]+' )
 curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_${VERSION}_Linux_x86_64.tar.gz"
 mkdir -p lazydocker-temp
@@ -29,4 +28,3 @@ tar -xzf lazydocker.tar.gz -C lazydocker-temp
 mv lazydocker-temp/lazydocker /usr/local/bin
 verify_binary lazydocker
 rm -rf lazydocker.tar.gz lazydocker-temp
-log "LazyDocker installed successfully."

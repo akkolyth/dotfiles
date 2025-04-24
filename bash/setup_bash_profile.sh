@@ -42,5 +42,3 @@ touch "$bash_profile"
 
 add_lines_to_top
 add_line_to_bottom
-
-echo "Lines have been added to $bash_profile if they were not already present."
