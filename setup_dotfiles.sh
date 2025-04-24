@@ -14,7 +14,7 @@ is_windows() {
     grep -qi "microsoft" /proc/version &> /dev/null
 }
 
-run_install_script() {
+install() {
     local script_path="$1"
     local tool_name=$(basename "$script_path" .sh)
 
@@ -22,7 +22,7 @@ run_install_script() {
         echo -e "${BOLD}${RED}Error: $script_path not found.${RESET}"
         summary+=("$tool_name: ${BOLD}${RED}Missing${RESET}")
         log "Aborting due to missing script."
-        print_summary
+        summary
         exit 1
     fi
 
@@ -32,7 +32,7 @@ run_install_script() {
         echo -e "${BOLD}${RED}Error: $tool_name failed.${RESET}"
         summary+=("$tool_name: ${BOLD}${RED}Failed${RESET}")
         log "Aborting due to failed installation."
-        print_summary
+        summary
         exit 1
     else
         echo -e "${BOLD}${GREEN}$tool_name installed.${RESET}"
@@ -40,14 +40,14 @@ run_install_script() {
     fi
 }
 
-print_summary() {
+summary() {
     log "Installation Summary:"
     for item in "${summary[@]}"; do
         echo -e "$item"
     done
 }
 
-stow_file() {
+stw() {
     local source_path="$1"
     local filename
     filename=$(basename "$source_path")
@@ -85,18 +85,17 @@ log "Checking WSL..."
 if is_windows; then
     summary+=("alacritty: ${BLUE}Skipped (WSL)${RESET}")
 else
-    run_install_script "./terminal/alacritty.sh"
+    install "./terminal/alacritty.sh"
 fi
 
-run_install_script "./tmux/setup.sh"
-run_install_script "./zsh/setup.sh"
-run_install_script "./zsh/tools_setup.sh"
-run_install_script "./docker/setup.sh"
-run_install_script "./bash/setup_bash_profile.sh"
+install "./tmux/setup.sh"
+install "./zsh/setup.sh"
+install "./zsh/tools_setup.sh"
+install "./docker/setup.sh"
+install "./bash/setup_bash_profile.sh"
 
-stow_file bash/.bashrc
-stow_file zsh/.zshrc
-stow_file tmux/.tmux.conf
+stw bash/.bashrc
+stw zsh/.zshrc
+stw tmux/.tmux.conf
 
-stow_dotfiles
-print_summary
+summary
