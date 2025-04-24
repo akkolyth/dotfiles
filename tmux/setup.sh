@@ -2,12 +2,15 @@
 
 set -e
 
-[[ $EUID -ne 0 ]] && { echo "Run as root"; exit 1; }
+require_root() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script must be run as root"
+        exit 1
+    fi
+}
 
-echo "Installing tmux..."
+require_root
+
 apt-get update -y
 apt-get install -y tmux
-
 tmux -V
-
-echo "Done."

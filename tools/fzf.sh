@@ -21,7 +21,5 @@ verify_binary() {
 }
 
 require_root
-log "Installing fzf..."
 apt-get update && apt-get install -y fzf
 verify_binary fzf
-log "fzf installed successfully."

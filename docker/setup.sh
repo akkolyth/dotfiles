@@ -2,9 +2,12 @@
 
 set -e
 
-[[ $EUID -ne 0 ]] && { echo "Run as root"; exit 1; }
-
-echo "Installing Docker..."
+require_root() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script must be run as root"
+        exit 1
+    fi
+}
 
 apt-get update
 apt-get install -y \
@@ -30,10 +33,7 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 
 if ! id -nG "$SUDO_USER" | grep -qw docker; then
     usermod -aG docker "$SUDO_USER"
-    echo "User $SUDO_USER added to docker group. Re-login may be required."
 fi
 
 docker --version
 docker compose version
-
-echo "Docker installation complete."

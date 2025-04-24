@@ -21,11 +21,9 @@ verify_binary() {
 }
 
 require_root
-log "Installing LazyGit..."
 VERSION=$(curl -s https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 install lazygit /usr/local/bin
 verify_binary lazygit
 rm -f lazygit.tar.gz lazygit
-log "LazyGit installed successfully."
