@@ -16,27 +16,26 @@ is_windows() {
 
 install() {
     local script_path="$1"
-    local tool_name=$(basename "$script_path" .sh)
 
     if [[ ! -f "$script_path" ]]; then
         echo -e "${BOLD}${RED}Error: $script_path not found.${RESET}"
-        summary+=("$tool_name: ${BOLD}${RED}Missing${RESET}")
+        summary+=("$script_path: ${BOLD}${RED}Missing${RESET}")
         log "Aborting due to missing script."
         summary
         exit 1
     fi
 
-    log "Installing $tool_name..."
+    log "Installing $script_path..."
     bash "$script_path"
     if [[ $? -ne 0 ]]; then
-        echo -e "${BOLD}${RED}Error: $tool_name failed.${RESET}"
-        summary+=("$tool_name: ${BOLD}${RED}Failed${RESET}")
+        echo -e "${BOLD}${RED}Error: $script_path failed.${RESET}"
+        summary+=("$script_path: ${BOLD}${RED}Failed${RESET}")
         log "Aborting due to failed installation."
         summary
         exit 1
     else
-        echo -e "${BOLD}${GREEN}$tool_name installed.${RESET}"
-        summary+=("$tool_name: ${BOLD}${GREEN}OK${RESET}")
+        echo -e "${BOLD}${GREEN}$script_path installed.${RESET}"
+        summary+=("$script_path: ${BOLD}${GREEN}OK${RESET}")
     fi
 }
 

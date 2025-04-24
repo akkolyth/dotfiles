@@ -103,16 +103,24 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+is_windows() {
+    grep -qi "microsoft" /proc/version &> /dev/null
+}
+
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 eval "$(starship init zsh)"
 starship preset no-empty-icons -o ~/.config/starship.toml
 
+alias t='tmux'
 alias c='clear'
 alias lg='lazygit'
 alias ldc='lazydocker'
-alias t='tmux attach -t akkolyth'
+
+if is_windows; then
+    alias e='explorer.exe'
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
