@@ -89,7 +89,9 @@ fi
 
 install "./tmux/setup.sh"
 install "./zsh/setup.sh"
-install "./zsh/tools_setup.sh"
+install "./tools/fzf.sh"
+install "./tools/lazydocker.sh"
+install "./tools/lazygit.sh"
 install "./docker/setup.sh"
 install "./bash/setup_bash_profile.sh"
 
