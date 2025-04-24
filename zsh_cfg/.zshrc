@@ -109,11 +109,13 @@ export KUBECONFIG=~/.kube/config
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
+starship preset no-empty-icons -o ~/.config/starship.toml
+
 alias c='clear'
 alias bat='batcat'
 alias t='tmux attach -t akkolyth'
 alias mc='mc -S ~/.local/mc/skins/dracula256.ini'
 
 # WSL GH
-pgrep -x "ssh-agent" > /dev/null || eval "$(ssh-agent -s)"
-ssh-add -l | grep -q "mm_wsl" || ssh-add ~/.ssh/mm_wsl
+eval "$(ssh-agent -s)" >/dev/null 2>&1
+ssh-add -l | grep -q "mm_wsl" || ssh-add ~/.ssh/mm_wsl >/dev/null 2>&1
