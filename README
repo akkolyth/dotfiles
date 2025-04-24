@@ -1,17 +1,8 @@
 .dotfiles
+=== 
 
-Installation
+.dotfiles setup: 
 
-To set up these dotfiles on your system, follow these steps:
-
-1. Clone the repository to your local machine:
-
-   git clone https://github.com/akkolyth/dotfiles.git ~/.dotfiles
-
-2. Navigate to the directory:
-
-   cd ~/.dotfiles
-
-3. Run the installation script with elevated privileges:
-
-   sudo -E ./install.sh
+git clone https://github.com/akkolyth/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+sudo -E ./setup_dotfiles.sh
