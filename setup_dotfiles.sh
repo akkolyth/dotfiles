@@ -48,25 +48,52 @@ summary() {
 
 stw() {
     local source_path="$1"
-    local filename
-    filename=$(basename "$source_path")
-    local target="$HOME/$filename"
+    local target_dir="$2"
 
-    if [[ ! -f "$source_path" ]]; then
-        echo -e "${RED}Error: $source_path does not exist or is not a file.${RESET}"
+    if [[ -z "$source_path" || -z "$target_dir" ]]; then
+        echo -e "${RED}Error: Source path and target directory must be provided.${RESET}"
         exit 1
     fi
 
-    if [[ -e "$target" && ! -L "$target" ]]; then
-        mv "$target" "$target.bak"
-        echo "Backed up existing $filename to $filename.bak"
+    target_dir="${target_dir/#\~/$HOME}"
+
+    if [[ ! -e "$source_path" ]]; then
+        echo -e "${RED}Error: $source_path does not exist.${RESET}"
+        exit 1
     fi
 
-    ln -sf "$(realpath "$source_path")" "$target"
-    echo "Linked $filename → $target"
-    summary+=("Stow $filename: ${GREEN}OK${RESET}")
-}
+    mkdir -p "$target_dir"
 
+    if [[ -d "$source_path" ]]; then
+        for item in "$source_path"/*; do
+            local filename
+            filename=$(basename "$item")
+            local target="$target_dir/$filename"
+
+            if [[ -e "$target" && ! -L "$target" ]]; then
+                mv "$target" "$target.bak"
+                echo "Backed up existing $filename to $filename.bak in $target_dir"
+            fi
+
+            ln -sf "$(realpath "$item")" "$target"
+            echo "Linked $filename → $target"
+            summary+=("Stow $filename: ${GREEN}OK${RESET}")
+        done
+    else
+        local filename
+        filename=$(basename "$source_path")
+        local target="$target_dir/$filename"
+
+        if [[ -e "$target" && ! -L "$target" ]]; then
+            mv "$target" "$target.bak"
+            echo "Backed up existing $filename to $filename.bak in $target_dir"
+        fi
+
+        ln -sf "$(realpath "$source_path")" "$target"
+        echo "Linked $filename → $target"
+        summary+=("Stow $filename: ${GREEN}OK${RESET}")
+    fi
+}
 
 echo -e "${BOLD}${RED}WARNING:${RESET} This will overwrite your dotfiles."
 echo -e "${BOLD}${BLUE}Target:${RESET} $HOME"
@@ -87,16 +114,17 @@ else
     install "./terminal/alacritty.sh"
 fi
 
-install "./tmux/setup.sh"
 install "./zsh/setup.sh"
+install "./tmux/setup.sh"
 install "./tools/fzf.sh"
 install "./tools/lazydocker.sh"
 install "./tools/lazygit.sh"
 install "./docker/setup.sh"
 install "./bash/setup_bash_profile.sh"
 
-stw bash/.bashrc
-stw zsh/.zshrc
-stw tmux/.tmux.conf
+stw bash/.bashrc ~
+stw zsh/.zshrc ~
+stw tmux/.tmux.conf ~ 
+# stw nvim ~/.config/nvim
 
 summary
