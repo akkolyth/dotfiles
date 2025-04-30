@@ -11,7 +11,7 @@ log() {
 }
 
 is_windows() {
-    grep -qi "microsoft" /proc/version &> /dev/null
+    grep -qi "microsoft" /proc/version &>/dev/null
 }
 
 install() {
@@ -98,9 +98,15 @@ stw() {
 echo -e "${BOLD}${RED}WARNING:${RESET} This will overwrite your dotfiles."
 echo -e "${BOLD}${BLUE}Target:${RESET} $HOME"
 read -p "Continue? (yes/no): " confirm
-[[ "$confirm" != "yes" ]] && { echo -e "${RED}Aborted.${RESET}"; exit 0; }
+[[ "$confirm" != "yes" ]] && {
+    echo -e "${RED}Aborted.${RESET}"
+    exit 0
+}
 
-[[ $EUID -ne 0 ]] && { echo -e "${RED}Run as root.${RESET}"; exit 1; }
+[[ $EUID -ne 0 ]] && {
+    echo -e "${RED}Run as root.${RESET}"
+    exit 1
+}
 
 summary=()
 
@@ -124,7 +130,7 @@ install "./bash/setup_bash_profile.sh"
 
 stw bash/.bashrc ~
 stw zsh/.zshrc ~
-stw tmux/.tmux.conf ~ 
-# stw nvim ~/.config/nvim
+stw tmux/.tmux.conf ~
+ln nvim ~/.config/nvim
 
 summary
