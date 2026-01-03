@@ -110,9 +110,6 @@ is_windows() {
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 
-eval "$(starship init zsh)"
-starship preset no-empty-icons -o ~/.config/starship.toml
-
 alias t='tmux'
 alias c='clear'
 alias lg='lazygit'
