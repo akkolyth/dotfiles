@@ -21,23 +21,6 @@ Optional Git pager, once per checkout:
 git config --global --add include.path "$PWD/config/git/delta.gitconfig"
 ```
 
-## Shortcuts
-
-- `t` → tmux session picker. Arguments go straight to tmux, so `t ls` lists sessions.
-- `lg` → LazyGit, `ldc` → LazyDocker, `c` → clear, `e` → Windows Explorer.
-- `z` → jump to a directory, `zi` → pick a directory from zoxide history.
-- Ctrl+T picks files with a preview, Ctrl+R searches history, and Alt+C picks a directory.
-
-### tmux
-
-- Ctrl+A then `s` opens the session picker. In the picker, `x` then `y` kills the selected session.
-- Ctrl+A then Esc enters vi copy mode. `v` selects, `y` copies, and `q` exits.
-- Ctrl+A then `v` splits side by side, `h` splits top and bottom, and `x` closes the active pane immediately.
-- Alt+arrow keys move between panes. Shift+Left/Right switches windows.
-- Ctrl+A then Ctrl+S saves a snapshot, and Ctrl+A then Ctrl+R restores it.
-  With TPM installed, Ctrl+A then Shift+I installs plugins. Continuum saves every minute while attached.
-- The status bar shows PREFIX and COPY when active, plus clocks for SF, NYC, and Warsaw.
-
 ## Windows
 
 From a checkout on the Windows filesystem:
@@ -51,3 +34,11 @@ Alacritty uses JetBrainsMono Nerd Font and opens WSL in your Linux home.
 Drag to copy and use Ctrl+V or Shift+Insert to paste. For the PowerShell
 profile, copy `config/windows/Microsoft.PowerShell_profile.ps1` to
 `$PROFILE.CurrentUserCurrentHost` after checking for an existing profile.
+
+## Dotfiles specific
+
+- `t` opens the tmux session picker. Arguments pass through to tmux.
+- `lg` runs LazyGit, `ldc` runs LazyDocker, `c` clears the screen, and `e` opens Windows Explorer.
+- Ctrl+T picks files with a bat preview.
+- In tmux, Ctrl+A then Esc enters vi copy mode. Ctrl+A then `x` closes the pane without confirmation.
+- Install the tmux plugins with Ctrl+A then Shift+I to enable automatic session recovery.
