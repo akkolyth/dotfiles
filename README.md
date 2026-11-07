@@ -53,6 +53,12 @@ refreshes the status bar. It restores the latest snapshot when the tmux server
 starts. Press Ctrl+A then Ctrl+S to save immediately or Ctrl+A then Ctrl+R
 to restore manually.
 
+## Alacritty on Windows
+
+Add the bindings in `config/alacritty/clipboard.windows.toml` to your
+`%APPDATA%/alacritty/alacritty.toml`. Ctrl+V and Shift+Insert paste from
+the Windows clipboard in normal terminal mode.
+
 ## Windows PowerShell
 
 Copy `config/windows/Microsoft.PowerShell_profile.ps1` to

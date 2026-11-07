@@ -1,0 +1,12 @@
+# Paste from the Windows clipboard.
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+mode = "~Vi"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+mode = "~Vi"
+action = "Paste"
