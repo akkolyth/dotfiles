@@ -43,7 +43,9 @@ Sign in to GitHub when ready with `gh auth login`.
 - **Ctrl+T** picks files with a bat preview. **Alt+C** jumps to a directory.
 - **Ctrl+R** searches command history.
 - `z` jumps to a recently or frequently used directory. `zi` opens an interactive picker.
-- `t`, `c`, `lg`, `ldc`, and `e` are defined in `config/zsh/aliases.zsh`.
+- `t` opens the tmux session picker. Select a session row and press `x` to
+  kill it, then confirm with `y`. Arguments such as `t ls` are passed to tmux.
+- `c`, `lg`, `ldc`, and `e` are defined in `config/zsh/aliases.zsh`.
 
 ## tmux session recovery
 
