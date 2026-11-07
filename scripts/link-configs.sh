@@ -18,10 +18,15 @@ fi
 repo_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
 status=0
 for relative_path in bash/.bashrc zsh/.zshrc tmux/.tmux.conf nvim; do
-    source_path="$repo_dir/config/$relative_path"
     case "$relative_path" in
-        nvim) target="${XDG_CONFIG_HOME:-$HOME/.config}/nvim" ;;
-        *) target="$HOME/${relative_path##*/}" ;;
+        nvim)
+            source_path="$repo_dir/config/nvim"
+            target="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+            ;;
+        *)
+            source_path="$repo_dir/${relative_path##*/}"
+            target="$HOME/${relative_path##*/}"
+            ;;
     esac
     replace=()
 
@@ -34,12 +39,21 @@ for relative_path in bash/.bashrc zsh/.zshrc tmux/.tmux.conf nvim; do
     if [[ -L "$target" && "$target" -ef "$source_path" ]]; then
         printf 'Already linked %s\n' "$target"
         continue
-    elif [[ -L "$target" && "$(realpath -m -- "$target")" == "$repo_dir/$relative_path" ]]; then
-        replace=(-f)
     elif [[ -e "$target" || -L "$target" ]]; then
-        printf 'Existing path needs review %s\n' "$target" >&2
-        status=1
-        continue
+        previous=
+        if [[ -L "$target" ]]; then
+            previous=$(realpath -m -- "$target")
+        fi
+        case "$previous" in
+            "$repo_dir/$relative_path"|"$repo_dir/config/$relative_path")
+                replace=(-f)
+                ;;
+            *)
+                printf 'Existing path needs review %s\n' "$target" >&2
+                status=1
+                continue
+                ;;
+        esac
     fi
 
     if "$apply"; then
