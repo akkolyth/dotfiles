@@ -57,7 +57,9 @@ to restore manually.
 
 Add the bindings in `config/alacritty/clipboard.windows.toml` to your
 `%APPDATA%/alacritty/alacritty.toml`. Ctrl+V and Shift+Insert paste from
-the Windows clipboard in normal terminal mode.
+the Windows clipboard in normal terminal mode. Drag to select and copy text
+without holding Shift. In WSL, tmux also sends mouse selections and vi-mode
+yanks to the Windows clipboard through `clip.exe`.
 
 ## Windows PowerShell
 
