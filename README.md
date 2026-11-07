@@ -1,6 +1,6 @@
 # dotfiles
 
-Bash, Zsh, tmux, and a little Neovim. Layout inspired by [geohot/configuration](https://github.com/geohot/configuration).
+My WSL and Windows setup. Bash, Zsh, tmux, Neovim, and Alacritty.
 
 ## WSL
 
@@ -21,11 +21,22 @@ Optional Git pager, once per checkout:
 git config --global --add include.path "$PWD/config/git/delta.gitconfig"
 ```
 
-- `t` opens the tmux picker. `x` then `y` kills the selected session.
-- Ctrl+T picks files, Ctrl+R searches history, and Alt+C picks a directory.
-- With TPM installed, Ctrl+A then Shift+I installs tmux plugins. Continuum
-  saves every minute while attached. Ctrl+A then Ctrl+S saves now, and Ctrl+A
-  then Ctrl+R restores the latest snapshot.
+## Shortcuts
+
+- `t` → tmux session picker. Arguments go straight to tmux, so `t ls` lists sessions.
+- `lg` → LazyGit, `ldc` → LazyDocker, `c` → clear, `e` → Windows Explorer.
+- `z` → jump to a directory, `zi` → pick a directory from zoxide history.
+- Ctrl+T picks files with a preview, Ctrl+R searches history, and Alt+C picks a directory.
+
+### tmux
+
+- Ctrl+A then `s` opens the session picker. In the picker, `x` then `y` kills the selected session.
+- Ctrl+A then Esc enters vi copy mode. `v` selects, `y` copies, and `q` exits.
+- Ctrl+A then `v` splits side by side, `h` splits top and bottom, and `x` closes the active pane immediately.
+- Alt+arrow keys move between panes. Shift+Left/Right switches windows.
+- Ctrl+A then Ctrl+S saves a snapshot, and Ctrl+A then Ctrl+R restores it.
+  With TPM installed, Ctrl+A then Shift+I installs plugins. Continuum saves every minute while attached.
+- The status bar shows PREFIX and COPY when active, plus clocks for SF, NYC, and Warsaw.
 
 ## Windows
 
