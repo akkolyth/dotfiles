@@ -45,6 +45,14 @@ Sign in to GitHub when ready with `gh auth login`.
 - `z` jumps to a recently or frequently used directory. `zi` opens an interactive picker.
 - `t`, `c`, `lg`, `ldc`, and `e` are defined in `config/zsh/aliases.zsh`.
 
+## tmux session recovery
+
+With TPM installed, press Ctrl+A then Shift+I to install the listed plugins.
+Continuum checks for a snapshot every minute while an attached tmux client
+refreshes the status bar. It restores the latest snapshot when the tmux server
+starts. Press Ctrl+A then Ctrl+S to save immediately or Ctrl+A then Ctrl+R
+to restore manually.
+
 ## Windows PowerShell
 
 Copy `config/windows/Microsoft.PowerShell_profile.ps1` to
