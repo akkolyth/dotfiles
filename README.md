@@ -7,8 +7,10 @@ Personal shell and terminal configuration for Ubuntu on WSL and Windows PowerShe
 | `config/bash/`, `config/zsh/`, `config/tmux/` | Live WSL dotfiles |
 | `config/git/delta.gitconfig` | Optional Delta pager settings |
 | `config/windows/` | Native PowerShell console profile |
-| `config/alacritty/` | Standalone Linux terminal config |
-| `scripts/link-configs.sh` | Preview or apply Bash, Zsh, and tmux links |
+| `config/alacritty/` | Windows TOML and Linux YAML terminal configs |
+| `config/nvim/` | Minimal Neovim config |
+| `scripts/link-configs.sh` | Preview or apply Bash, Zsh, tmux, and Neovim links |
+| `scripts/install-alacritty.ps1` | Preview or install the Windows Alacritty config |
 | `scripts/install-cli-tools.sh` | Install pinned GitHub CLI, Delta, and fd releases |
 
 ## WSL setup
@@ -55,13 +57,31 @@ refreshes the status bar. It restores the latest snapshot when the tmux server
 starts. Press Ctrl+A then Ctrl+S to save immediately or Ctrl+A then Ctrl+R
 to restore manually.
 
+## Neovim
+
+The linker installs `config/nvim/` at `${XDG_CONFIG_HOME:-$HOME/.config}/nvim`.
+With Neovim installed, run `nvim` to use the config. It has no plugins and
+uses line numbers, two-space indentation, and green comments, inspired by
+[Geohot's Vim config](https://github.com/geohot/configuration/blob/master/.vimrc).
+
 ## Alacritty on Windows
 
-Add the bindings in `config/alacritty/clipboard.windows.toml` to your
-`%APPDATA%/alacritty/alacritty.toml`. Ctrl+V and Shift+Insert paste from
-the Windows clipboard in normal terminal mode. Drag to select and copy text
-without holding Shift. In WSL, tmux also sends mouse selections and vi-mode
-yanks to the Windows clipboard through `clip.exe`.
+From a checkout on the Windows filesystem, open Windows PowerShell in the
+repository root and preview or install:
+
+```powershell
+.\scripts\install-alacritty.ps1
+.\scripts\install-alacritty.ps1 -Apply
+```
+
+This copies `config/alacritty/alacritty.toml` to
+`%APPDATA%/alacritty/alacritty.toml` and backs up a different existing config.
+Install JetBrainsMono Nerd Font to match the font settings. Alacritty opens the
+default WSL distribution in your Linux home directory.
+
+Ctrl+V and Shift+Insert paste from the Windows clipboard in normal terminal
+mode. Drag to copy text without holding Shift. In WSL, tmux sends selections
+and vi-mode yanks to the Windows clipboard through `clip.exe`.
 
 ## Windows PowerShell
 
