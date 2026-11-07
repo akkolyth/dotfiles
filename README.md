@@ -10,7 +10,6 @@ Personal shell and terminal configuration for Ubuntu on WSL and Windows PowerShe
 | `config/alacritty/` | Standalone Linux terminal config |
 | `scripts/link-configs.sh` | Preview or apply Bash, Zsh, and tmux links |
 | `scripts/install-cli-tools.sh` | Install pinned GitHub CLI, Delta, and fd releases |
-| `scripts/legacy/` | Archived provisioning scripts |
 
 ## WSL setup
 
