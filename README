@@ -1,7 +1,0 @@
-.dotfiles
-=== 
-
-git clone https://github.com/akkolyth/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-sudo -E ./setup_dotfiles.sh
-
