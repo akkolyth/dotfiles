@@ -1,7 +1,5 @@
 # dotfiles
 
-My WSL and Windows setup. Bash, Zsh, tmux, Neovim, and Alacritty.
-
 ## WSL
 
 ```sh
