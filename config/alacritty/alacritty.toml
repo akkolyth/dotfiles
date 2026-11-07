@@ -1,0 +1,55 @@
+[colors.normal]
+black = "#1d1f21"
+blue = "#308cd2"
+cyan = "#ffffff"
+green = "#50c878"
+magenta = "#b294bb"
+red = "#cc6666"
+white = "#c5c8c6"
+yellow = "#fb7e14"
+
+[colors.primary]
+background = "#151515"
+foreground = "#c5c8cf"
+
+[font]
+offset = { x = 1, y = 0 }
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[shell]
+program = "wsl.exe"
+args = ["~"]
+
+[selection]
+save_to_clipboard = true
+
+# Paste from the Windows clipboard.
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+mode = "~Vi"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+mode = "~Vi"
+action = "Paste"

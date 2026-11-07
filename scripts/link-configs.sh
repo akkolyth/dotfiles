@@ -17,12 +17,15 @@ fi
 
 repo_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
 status=0
-for relative_path in bash/.bashrc zsh/.zshrc tmux/.tmux.conf; do
+for relative_path in bash/.bashrc zsh/.zshrc tmux/.tmux.conf nvim; do
     source_path="$repo_dir/config/$relative_path"
-    target="$HOME/${relative_path##*/}"
+    case "$relative_path" in
+        nvim) target="${XDG_CONFIG_HOME:-$HOME/.config}/nvim" ;;
+        *) target="$HOME/${relative_path##*/}" ;;
+    esac
     replace=()
 
-    if [[ ! -f "$source_path" ]]; then
+    if [[ ! -e "$source_path" ]]; then
         printf 'Missing source %s\n' "$source_path" >&2
         status=1
         continue
@@ -40,6 +43,7 @@ for relative_path in bash/.bashrc zsh/.zshrc tmux/.tmux.conf; do
     fi
 
     if "$apply"; then
+        mkdir -p -- "$(dirname -- "$target")"
         ln -sT "${replace[@]}" -- "$source_path" "$target"
         printf 'Linked %s -> %s\n' "$target" "$source_path"
     else
