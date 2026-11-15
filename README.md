@@ -35,15 +35,14 @@ profile, copy `config/windows/Microsoft.PowerShell_profile.ps1` to
 
 ## GlazeWM workspace session
 
-The session script lives in `config/glazewm/workspace-session.ps1`. From an
-administrator PowerShell, run `scripts/link-glazewm.ps1` using the checkout's
-Windows path to link it into `%USERPROFILE%\.glzr\glazewm`. The installer backs
-up the existing script as `workspace-session.ps1.before-dotfiles.bak` and refuses
-to overwrite that backup on subsequent runs.
+The session script lives in `config/glazewm/workspace-session.ps1`. From
+PowerShell, run `scripts/install-glazewm.ps1` using the checkout's Windows path
+to copy it into `%USERPROFILE%\.glzr\glazewm`. Rerun after changing the source.
+The installer preserves the original as `workspace-session.ps1.before-dotfiles.bak`
+and replaces an existing symlink with a regular file.
 
-GlazeWM's existing startup command continues to use the Windows link. Snapshots
-and logs stay beside that link on Windows. A checkout inside WSL uses a
-`\\wsl.localhost\Ubuntu\...` target, so WSL must be accessible when GlazeWM starts.
+GlazeWM's existing startup command uses the local Windows copy, so startup does
+not depend on WSL. Snapshots and logs stay beside the installed script on Windows.
 
 ## Dotfiles specific
 
